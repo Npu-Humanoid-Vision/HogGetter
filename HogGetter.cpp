@@ -11,25 +11,25 @@ void HogGetter::set_scriptor(const cv::HOGDescriptor& d) {
 
 void HogGetter::set_window_size(const cv::Size& s) {
     window_size_ = s;
-    hog_scriptor_ = HOGDescriptor(window_size_, block_size_, block_stride_, cell_size_, hist_bins_);
+    hog_scriptor_ = cv::HOGDescriptor(window_size_, block_size_, block_stride_, cell_size_, hist_bins_);
 } 
 
 void HogGetter::set_cell_size(const cv::Size& s) {
     cell_size_ = s;
-    hog_scriptor_ = HOGDescriptor(window_size_, block_size_, block_stride_, cell_size_, hist_bins_);
+    hog_scriptor_ = cv::HOGDescriptor(window_size_, block_size_, block_stride_, cell_size_, hist_bins_);
 }
 
 void HogGetter::set_block_size(const cv::Size& s) {
     block_size_ = s;
-    hog_scriptor_ = HOGDescriptor(window_size_, block_size_, block_stride_, cell_size_, hist_bins_);
+    hog_scriptor_ = cv::HOGDescriptor(window_size_, block_size_, block_stride_, cell_size_, hist_bins_);
 } 
 
 void HogGetter::set_block_stride(const cv::Size& s) {
     block_stride_ = s;
-    hog_scriptor_ = HOGDescriptor(window_size_, block_size_, block_stride_, cell_size_, hist_bins_);
+    hog_scriptor_ = cv::HOGDescriptor(window_size_, block_size_, block_stride_, cell_size_, hist_bins_);
 } 
 
 void HogGetter::set_nbins(const int& i) {
     hist_bins_ = i;
-    hog_scriptor_ = HOGDescriptor(window_size_, block_size_, block_stride_, cell_size_, hist_bins_);
+    hog_scriptor_ = cv::HOGDescriptor(window_size_, block_size_, block_stride_, cell_size_, hist_bins_);
 }

@@ -15,8 +15,10 @@ public:
         NEG_LABLE ,
         HARD_LABLE
     };
-    HogGetter(){}
-    ~HogGetter(){}
+    HogGetter() {
+        hog_scriptor_ = cv::HOGDescriptor(Size(64,128),Size(16,16),Size(8,8),Size(8,8),9);
+    }
+    ~HogGetter() {}
 private:// 数据成员
     cv::HOGDescriptor hog_scriptor_; // hog检测器
     cv::Size window_size_;           // 检测窗口的大小，即待检测图片的大小
