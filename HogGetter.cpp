@@ -44,6 +44,7 @@ void HogGetter::ImageReader_(const string& folder_path, const string& postfix = 
             raw_images_.push_back(cv::imread(folder_path + file_info.name));
         } while (_findnext(file_handle, &file_info) == 0);
     }
+    _findclose(file_handle);
 }
 
 cv::Mat HogGetter::RandomCutter_(cv::Mat image) {
