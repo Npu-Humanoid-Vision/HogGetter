@@ -34,7 +34,7 @@ public:// 设置数据成员的接口
     void set_block_size(const cv::Size&);
     void set_block_stride(const cv::Size&);
     void set_nbins(const int&);
-public:
+public:// 函数接口
     void ImageReader_(const string&, const string&);    // read images
     cv::Mat RandomCutter_(cv::Mat);                     // 随机裁剪
     cv::Mat HogComputter_();                            // 计算 raw_images_ HOG feature，存在 samples_features_
