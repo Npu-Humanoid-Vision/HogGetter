@@ -27,6 +27,9 @@ private:// 数据成员
 
     cv::Mat sample_features_;            // 样本个 row, 每一 row 为该样本的 HOG feature lable 
     std::vector<cv::Mat> raw_images_;    // 所有样本 vector
+
+    int feature_vector_dimesion_;       // 特征向量的维度
+    int sample_nums_;                   // 训练样本的数量
 public:// 设置数据成员的接口
     void set_scriptor(const cv::HOGDescriptor&);    // 直接给一个检测器 
     void set_window_size(const cv::Size&);           
@@ -35,7 +38,7 @@ public:// 设置数据成员的接口
     void set_block_stride(const cv::Size&);
     void set_nbins(const int&);
 public:// 函数接口
-    void ImageReader_(const string&, const string&);    // read images
+    void ImageReader_(const string& folder_path, const string& postfix);    // read images
     cv::Mat RandomCutter_(cv::Mat);                     // 随机裁剪
     cv::Mat HogComputter_();                            // 计算 raw_images_ HOG feature，存在 samples_features_
 };

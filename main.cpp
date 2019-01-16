@@ -44,6 +44,7 @@ int main(int argc, char const *argv[]) {
     }
     
     hg.HogComputter_();
-
+    cout<<hg.feature_vector_dimesion_<<endl;
+    cout<<hg.sample_nums_<<endl;
     return 0;
 }

@@ -34,7 +34,7 @@ void HogGetter::set_nbins(const int& i) {
     hog_scriptor_ = cv::HOGDescriptor(window_size_, block_size_, block_stride_, cell_size_, hist_bins_);
 }
 
-void HogGetter::ImageReader_(const string& folder_path, const string& postfix = "/.jpg") {
+void HogGetter::ImageReader_(const string& folder_path, const string& postfix = "/*.jpg") {
     __int64 file_handle = 0;
     struct _finddata_t file_info;
     string image_path;
@@ -44,6 +44,7 @@ void HogGetter::ImageReader_(const string& folder_path, const string& postfix = 
             raw_images_.push_back(cv::imread(folder_path + file_info.name));
         } while (_findnext(file_handle, &file_info) == 0);
     }
+
     _findclose(file_handle);
 }
 
@@ -84,16 +85,20 @@ cv::Mat HogGetter::HogComputter_() {
 
         if (iter == raw_images_.begin()) {
             sample_features_ = cv::Mat::zeros(raw_images_.size(), descrip_vec.size(), CV_32FC1);
+
+            // 对训练数据相关的数据进行初始化
+            feature_vector_dimesion_ = (int)descrip_vec.size();
+            sample_nums_ = raw_images_.size();
         }
         else {
             for (int i = 0; i < descrip_vec.size(); i++) {
                 sample_features_.at<float>(iter-raw_images_.begin(), i) = descrip_vec[i];
-                cout<<descrip_vec[i]<<' ';
+                // cout<<descrip_vec[i]<<' ';
             }
-            cout<<endl;
+            // cout<<endl;
         }
     }
 
-    
+    cout<<sample_features_.size()<<endl;
     return sample_features_;
 }
