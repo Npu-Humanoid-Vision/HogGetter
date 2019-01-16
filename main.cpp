@@ -1,10 +1,49 @@
-#include <bits/stdc++.h>
-#include <opencv2/opencv.hpp>
-using namespace std;
-using namespace cv;
+#include "HogGetter.h"
 
-int main(int argc, char const *argv[]) {
-    
-    return 0;
+string trainPath = "./";
+
+//遍历每个文件夹下的图片，并保存为fileList
+void getImages(string path, vector<string>& imagesList)
+{
+    intptr_t hFile = 0;
+    struct _finddata_t fileinfo;
+    string p;
+
+    hFile = _findfirst(p.assign(path).append("\\*.cpp").c_str(), &fileinfo);
+
+    if (hFile != -1) {
+        do {
+            imagesList.push_back(fileinfo.name);//保存类名
+            } while (_findnext(hFile, &fileinfo) == 0);
+    }
 }
 
+
+int main(int argc, char const *argv[]) {
+    // vector<string> fileLists;
+    // // getAllImages(trainPath, fileLists);
+    // getImages(trainPath, fileLists);
+
+    // for (auto p = fileLists.begin(); p != fileLists.end(); p++)
+    //     cout << *p << endl;
+    HogGetter hg;
+    
+    // tested image_reader
+
+    hg.ImageReader_("D:/78things/INRIAPerson/INRIAPerson/96X160H96/Train/pos/", "*.png");
+    for (auto img_ptr = hg.raw_images_.begin(); img_ptr != hg.raw_images_.end(); img_ptr++) {
+        // cv::imshow("233", *img_ptr);
+    //     cv::Mat image = img_ptr->clone();
+    //     cv::imshow("322", hg.RandomCutter_(image));
+    //     cv::waitKey();
+    
+        
+
+        // cv::imshow("244", *img_ptr);
+        // cv::waitKey();
+    }
+    
+    hg.HogComputter_();
+
+    return 0;
+}
