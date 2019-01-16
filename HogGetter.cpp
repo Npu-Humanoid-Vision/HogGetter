@@ -99,6 +99,6 @@ cv::Mat HogGetter::HogComputter_() {
         }
     }
 
-    cout<<sample_features_.size()<<endl;
+    // cout<<sample_features_.size()<<endl;
     return sample_features_;
 }
