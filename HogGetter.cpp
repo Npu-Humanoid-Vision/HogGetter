@@ -56,7 +56,12 @@ cv::Mat HogGetter::RandomCutter_(cv::Mat image) {
                 <<"     Complied on"<<__DATE__
                 <<"at"<<__TIME__<<endl;
         return cv::Mat();
-     }
+    }
+    else if(image.cols == window_size_.width 
+     || image.rows == window_size_.height) {
+         return image;
+    }
+
     int cols_margin = window_size_.width - image.cols;
     int rows_margin = window_size_.height - image.rows;
 
@@ -77,7 +82,9 @@ cv::Mat HogGetter::HogComputter_() {
 
     for (std::vector<cv::Mat>::iterator iter = raw_images_.begin();
         iter != raw_images_.end(); iter++) {
-
+        
+        // cv::imshow("233", *iter);
+        // cv::waitKey();
         cv::Mat t_img = RandomCutter_((*iter));
         (*iter) = t_img;
 
@@ -98,7 +105,8 @@ cv::Mat HogGetter::HogComputter_() {
             // cout<<endl;
         }
     }
-
-    // cout<<sample_features_.size()<<endl;
+    cout<<"All the Computed images num: "<< sample_nums_<<endl;
+    cout<<"Hog Features' vector dim: "<<feature_vector_dimesion_<<endl;
+    cout<<"Feature Mat size: "<<sample_features_.size()<<endl;
     return sample_features_;
 }
