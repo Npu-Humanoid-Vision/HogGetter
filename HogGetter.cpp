@@ -39,9 +39,11 @@ void HogGetter::ImageReader_(const string& folder_path, const string& postfix = 
     struct _finddata_t file_info;
     string image_path;
     file_handle = _findfirst(image_path.assign(folder_path).append(postfix).c_str(), &file_info);
+    cout<<image_path<<endl;
     if (file_handle != -1) {
         do {
             raw_images_.push_back(cv::imread(folder_path + file_info.name));
+            cout<<raw_images_.size()<<endl;
         } while (_findnext(file_handle, &file_info) == 0);
     }
 

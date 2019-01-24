@@ -1,4 +1,5 @@
 #include "HogGetter.h"
+#include <windows.h>
 
 string trainPath = "./";
 
@@ -9,7 +10,7 @@ void getImages(string path, vector<string>& imagesList)
     struct _finddata_t fileinfo;
     string p;
 
-    hFile = _findfirst(p.assign(path).append("\\*.cpp").c_str(), &fileinfo);
+    hFile = _findfirst(p.assign(path).append("//*.cpp").c_str(), &fileinfo);
 
     if (hFile != -1) {
         do {
@@ -30,7 +31,8 @@ int main(int argc, char const *argv[]) {
     
     // tested image_reader
 
-    hg.ImageReader_("D:/78things/INRIAPerson/INRIAPerson/96X160H96/Train/pos/", "*.png");
+    hg.ImageReader_("D:/baseRelate/code/svm_trial/BackUpSource/Triangle/RawImgs/", "*.jpg");
+    cout<<hg.raw_images_.size()<<endl;
     for (auto img_ptr = hg.raw_images_.begin(); img_ptr != hg.raw_images_.end(); img_ptr++) {
         // cv::imshow("233", *img_ptr);
     //     cv::Mat image = img_ptr->clone();
@@ -40,11 +42,11 @@ int main(int argc, char const *argv[]) {
         
 
         // cv::imshow("244", *img_ptr);
-        // cv::waitKey();
+        // cv::waitKey(50);
     }
-    
-    hg.HogComputter_();
-    cout<<hg.feature_vector_dimesion_<<endl;
-    cout<<hg.sample_nums_<<endl;
+    // Sleep(1000);
+    // cv::Mat t = hg.HogComputter_();
+    // cout<<hg.feature_vector_dimesion_<<endl;
+    // cout<<hg.sample_nums_<<endl;
     return 0;
 }

@@ -13,7 +13,7 @@ class HogGetter {
 public:
 
     HogGetter() {
-        cv::HOGDescriptor d(Size(64,128), Size(16,16), Size(8,8), Size(8,8), 9);
+        cv::HOGDescriptor d(Size(64,128), Size(16,16), Size(8,8), Size(8,8), 9);        
         this->set_scriptor(d);
     }
     ~HogGetter() {}
